@@ -1,17 +1,17 @@
-# Easy-GPU-PV-DEPARSEC
+# Simple-GPU-P
 A work-in-progress project dedicated to making GPU Paravirtualization on Windows Hyper-V easier!
-This project does not use Parsec so you can rest easy.
 
 ![](https://i.imgur.com/pRlwa4n.gif)
 
 GPU-PV allows you to partition your systems dedicated or integrated GPU and assign it to several Hyper-V VMs.  It's the same technology that is used in WSL2, and Windows Sandbox.
 
-Easy-GPU-PV aims to make this easier by automating the steps required to get a GPU-PV VM up and running.
-Easy-GPU-PV does the following...
+Simple-GPU-P aims to make this easier by automating the steps required to get a GPU-PV VM up and running.
+Simple-GPU-P does the following...
 1. Allows managing GPUs in your VM
 2. Adds GPU to existing VM
 3. Updates Drivers in VM
 4. Removes GPUs from VM
+5. Changes allocation of your GPU
 
 ### Prerequisites:
 * Windows 10 20H1+ Pro, Enterprise or Education OR Windows 11 Pro, Enterprise or Education.  Windows 11 on host and VM is preferred due to better compatibility.
@@ -38,6 +38,7 @@ Easy-GPU-PV does the following...
 - Vulkan renderer is unavailable and GL games may or may not work.  [This](https://www.microsoft.com/en-us/p/opencl-and-opengl-compatibility-pack/9nqpsl29bfff?SilentAuth=1&wa=wsignin1.0#activetab=pivot:overviewtab) may help with some OpenGL apps.
 - If you do not have administrator permissions on the machine it means you set the username and vmname to the same thing, these needs to be different.
 - AMD Polaris GPUS like the RX 580 do not support hardware video encoding via GPU Paravirtualization at this time.
+- Linux Virtual Guests are not supported yet
 
 ### Original Project:
 - Original Project is available [here.](https://github.com/jamesstringerparsec/Easy-GPU-PV)

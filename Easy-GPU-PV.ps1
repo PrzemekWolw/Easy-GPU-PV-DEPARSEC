@@ -4,7 +4,8 @@
 [int]$choice = Read-Host -Prompt 'What do you want to do:
 1. Add GPU to Existing Virtual Machine
 2. Update GPU Drivers in Virtual Machine
-3. Remove GPU from Virtual Machine '
+3. Remove GPU from Virtual Machine
+4. Change GPU Allocation'
 
 if ($choice -eq 1) {
     "Adding GPU to VM"
@@ -336,6 +337,38 @@ if ($choice -eq 3) {
         "Selected VM: $selectedVM"
         Remove-VMGpuPartitionAdapter -VMName $selectedVM
         "GPU Removed"
+    }
+    else {
+        'This VM does not exists'
+        Read-Host -Prompt "Press Enter to Exit"
+    }
+}
+if ($choice -eq 4) {
+    "Changing GPU Allocation"
+    Import-Module $PSSCriptRoot\Resize-GPUAlloc.psm1
+    "Checking for available virtual machines"
+    $vmTable = @{}
+    $GetVM = Get-VM
+    $count = 0
+    ForEach ($line in $($GetVM -split "`r`n"))
+    {
+        $count = $count + 1
+        $line = $line.replace("VirtualMachine (Name = '","").replace("') ","").replace("[","") -replace ('Id = .*', '')
+        $vmTable.Add($count, $Line)
+    }
+    "Select Virtual Machine"
+    $count = 0
+    ForEach ($key in $vmTable.keys)
+    {
+        $message = '{0}. {1}' -f $key, $vmTable[$key]
+        Write-Output $message
+    }
+    [int]$selection = Read-Host -Prompt 'Virtual Machine: '
+    if ($vmTable.ContainsKey($selection)) {
+        [string]$selectedVM = '{1}' -f $selection, $vmTable[$selection]
+        "Selected VM: $selectedVM"
+        [int]$perc = Read-Host -Prompt 'Enter GPU Allocation Percentage: '
+        Resize-GPUAlloc -VMName $selectedVM -GPUName -GPUResourceAllocationPercentage $perc
     }
     else {
         'This VM does not exists'
