@@ -23,9 +23,13 @@ Simple-GPU-P does the following...
 ### Instructions
 1. Make sure your system meets the prerequisites.
 2. Download files from this repository
-3. Install Windows on your VM
-4. Run ```RUN-ME.BAT``` as Administrator
-5. Follow the steps in command prompt
+3. Use Generation 2 of VM
+4. Install Windows on your VM
+5. DISABLE dynamic memory
+6. DISABLE automatic snapshots
+7. Run ```RUN-ME.BAT``` as Administrator
+8. Follow the steps in command prompt
+9. In Hyper-V settings enable enhanced session to add sound support
 
 ### Thanks to:
 - [Hyper-ConvertImage](https://github.com/tabs-not-spaces/Hyper-ConvertImage) for creating an updated version of [Convert-WindowsImage](https://github.com/MicrosoftDocs/Virtualization-Documentation/tree/master/hyperv-tools/Convert-WindowsImage) that is compatible with Windows 10 and 11.
