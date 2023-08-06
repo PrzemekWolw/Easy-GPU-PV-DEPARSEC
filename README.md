@@ -37,7 +37,8 @@ Simple-GPU-P does the following...
 
 ### Vulkan:
 - Vulkan works on certain Hardware-software configurations
-  ![](https://media.beamng.com/ch2on8x8rhtebHeS | width=100)
+
+  <img src="https://media.beamng.com/ch2on8x8rhtebHeS" width="500">
 
 ### Notes:
 - Your GPU on the host will have a Microsoft driver in device manager, rather than an nvidia/intel/amd driver. As long as it doesn't have a yellow triangle over top of the device in device manager, it's working correctly.
