@@ -35,11 +35,13 @@ Simple-GPU-P does the following...
 - [Hyper-ConvertImage](https://github.com/tabs-not-spaces/Hyper-ConvertImage) for creating an updated version of [Convert-WindowsImage](https://github.com/MicrosoftDocs/Virtualization-Documentation/tree/master/hyperv-tools/Convert-WindowsImage) that is compatible with Windows 10 and 11.
 - [gawainXX](https://github.com/gawainXX) for help testing and pointing out bugs and feature improvements.
 
+### Vulkan:
+- Vulkan works on certain Hardware-software configurations
+  ![](https://media.beamng.com/ch2on8x8rhtebHeS | width=100)
 
 ### Notes:
 - Your GPU on the host will have a Microsoft driver in device manager, rather than an nvidia/intel/amd driver. As long as it doesn't have a yellow triangle over top of the device in device manager, it's working correctly.
 - The screen may go black for times up to 10 seconds in situations when UAC prompts appear, applications go in and out of fullscreen and when you switch between video codecs in Parsec - not really sure why this happens, it's unique to GPU-P machines and seems to recover faster at 1280x720.
-- Vulkan renderer is unavailable and GL games may or may not work.  [This](https://www.microsoft.com/en-us/p/opencl-and-opengl-compatibility-pack/9nqpsl29bfff?SilentAuth=1&wa=wsignin1.0#activetab=pivot:overviewtab) may help with some OpenGL apps.
 - If you do not have administrator permissions on the machine it means you set the username and vmname to the same thing, these needs to be different.
 - AMD Polaris GPUS like the RX 580 do not support hardware video encoding via GPU Paravirtualization at this time.
 - Linux Virtual Guests are not supported yet
