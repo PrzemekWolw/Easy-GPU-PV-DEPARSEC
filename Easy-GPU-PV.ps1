@@ -12,17 +12,6 @@ if ($choice -eq 1) {
     Import-Module $PSSCriptRoot\Add-GPUPartitiontoExistingVM.psm1
 
     "Checking for available GPUs"
-    Function Get-DesktopPC
-    {
-     $isDesktop = $true
-     if(Get-WmiObject -Class win32_systemenclosure | Where-Object { $_.chassistypes -eq 9 -or $_.chassistypes -eq 10 -or $_.chassistypes -eq 14})
-       {
-       Write-Warning "Thunderbolt 3 or 4 dock based GPU's may work"
-       $isDesktop = $false }
-     if (Get-WmiObject -Class win32_battery)
-       { $isDesktop = $false }
-     $isDesktop
-    }
 
     Function Get-WindowsCompatibleOS {
     $build = Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion'
@@ -64,7 +53,7 @@ if ($choice -eq 1) {
             }
     }
 
-    If ((Get-DesktopPC) -and  (Get-WindowsCompatibleOS) -and (Get-HyperVEnabled)) {
+    If ((Get-WindowsCompatibleOS) -and (Get-HyperVEnabled)) {
         "System Compatible"
         $build = Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion'
         if ($build.CurrentBuild -ge 22000) {
@@ -166,17 +155,6 @@ if ($choice -eq 2) {
     Import-Module $PSSCriptRoot\Update-VMGpuPartitionDriver.psm1
 
     "Checking for available GPUs"
-    Function Get-DesktopPC
-    {
-     $isDesktop = $true
-     if(Get-WmiObject -Class win32_systemenclosure | Where-Object { $_.chassistypes -eq 9 -or $_.chassistypes -eq 10 -or $_.chassistypes -eq 14})
-       {
-       Write-Warning "Thunderbolt 3 or 4 dock based GPU's may work"
-       $isDesktop = $false }
-     if (Get-WmiObject -Class win32_battery)
-       { $isDesktop = $false }
-     $isDesktop
-    }
 
     Function Get-WindowsCompatibleOS {
     $build = Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion'
@@ -218,7 +196,7 @@ if ($choice -eq 2) {
             }
     }
 
-    If ((Get-DesktopPC) -and  (Get-WindowsCompatibleOS) -and (Get-HyperVEnabled)) {
+    If ((Get-WindowsCompatibleOS) -and (Get-HyperVEnabled)) {
         "System Compatible"
         $build = Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion'
             if ($build.CurrentBuild -ge 22000) {
