@@ -31,7 +31,7 @@
     }
 
     "Mounting Drive..."
-    $DriveLetter = (Mount-VHD -Path $DiskPath -PassThru | Get-Disk | Get-Partition | Get-Volume | Where-Object {$_.DriveLetter} | ForEach-Object DriveLetter)
+    $DriveLetter = (Mount-VHD -Path $DiskPath -PassThru | Get-Disk | Get-Partition | Get-Volume | Where-Object {$_.DriveLetter  -and $_.FileSystemType -eq "NTFS"} | ForEach-Object DriveLetter)
 
     if (-Not $DriveLetter) {
         'Drive is not mounted'
